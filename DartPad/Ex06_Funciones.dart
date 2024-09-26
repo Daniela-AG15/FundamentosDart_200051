@@ -3,7 +3,7 @@ void main() {
 
   // 1. Llamado de una función sin parámetros 
   greetEveryone();
-  
+
   // 2. Llamado de una función que retorna valores
   // a) Sin almacenar el valor de una variable
   print("Hoy es el día número: ${getDayNumber()} del mes");
@@ -15,7 +15,7 @@ void main() {
   // 3. Llamado de una función con un solo parámetro obligatorio
   // a) Llamado correcto 
   print(greetSomeone("Daniela"));
-  
+
   // b) En caso de que la función esté declarada como dynamic 
   print(greetSomeone("4")); // Cambiado a String
   print(greetSomeone("-315")); // Cambiado a String
@@ -32,26 +32,28 @@ void main() {
   print(greetSomeoneTyped(3.1416)); // Esto generará un error
   print(greetSomeoneTyped(true)); // Esto generará un error
   */
-  
+
   // 3.2 
   // print(greetSomeone()); // Esto no se puede ejecutar si no se definen los parámetros, por defecto están definidos como obligatorios
-
-  // 4. Llamado de una función con parámetros opcionales
-  // 4.1 Enviando ambos parámetros
-  print(greetHourOfDay("Ana", 20));
   
+
+  // 4. Llamado de una función con parámetros posicionales
+  // 4.1 Enviando ambos parámetros
+  print(greetHourOfDay("Ana", 10));
+
   // 4.2 Solo enviando el obligatorio
   print(greetHourOfDay("Karen", null));
-  
+
+
   // Solo pueden hacer una sola operacion
   // 5. Funciones Lambda
   var calculaCosto = (double productQuantity, double productPrice, double percentageDiscount) =>
       (productQuantity * productPrice) * (1- percentageDiscount / 100);
-  
+
   double cantidadProducto = 5;
   double precioProducto = 125.50;
   double descuento = 2.5;
-  
+
   print("""
   Costo del producto: ${precioProducto}
   Cantidad: ${cantidadProducto}
@@ -59,6 +61,15 @@ void main() {
   ------------------------------------------------------------------------------------
   Costo del carrito de compras: ${calculaCosto(cantidadProducto, precioProducto, descuento)}
   """);
+  //6.
+  print(infoCarListStatus(buyerName: "Dana"));
+  //6.1
+  print(infoCarListStatus(
+    status: "En espera de pago",
+    amountCarList: 2416.20,
+     buyerName: "Demian"
+  ));
+  
 }
 
 // Funciones y Parámetros  
@@ -98,6 +109,15 @@ String greetHourOfDay(String personName, [int? hora]) {
   } else {
     saludo = "Buenas noches";
   }
-  
+
   return "$saludo, $personName!";
 }
+
+//6.Funciones con parametros
+
+String infoCarListStatus(
+  {required String buyerName,
+   double amountCarList=0.0,
+   String status = "Seleccion de producto"}){
+  return "El carrito de compras de: ${buyerName}, tiene un total de: \$${amountCarList} y actualmente esta en status de:${status}";
+   }
