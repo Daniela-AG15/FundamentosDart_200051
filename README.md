@@ -14,7 +14,8 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |4|Tipos de Datos en Dart|5|☑Finalizada|
 |5|Tipo de dato Dinamico|5|☑Finalizada|
 |6|Mapas|6|☑Finaliza|
-|7|Listas, Iterables y Conjuntos de Datos|9|⭐Activa|
+|7|Listas, Iterables y Conjuntos de Datos|9|☑Finalizada|
+|8|Funciones|10|⭐Activa|
 
 ### LISTA DE HERRAMIENTAS
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
