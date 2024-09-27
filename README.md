@@ -8,7 +8,7 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 
 |NO.|Nombre|Potenciador|Estatus|
 |--|--|--|--|
-|1|Metodologia de Evaluación de la Asignatura|1|✔Finalizada|
+|1|Metodologia de Evaluación de la Asignatura|1|☑Finalizada|
 |2|Instalación y Configuración del Entorno de Desarrollo de Flutter/Dart|23|☑Finalizada|
 |3|Hola Mundo desde DART|10|☑Finalizada|
 |4|Tipos de Datos en Dart|5|☑Finalizada|
@@ -16,6 +16,7 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |6|Mapas|6|☑Finaliza|
 |7|Listas, Iterables y Conjuntos de Datos|9|☑Finalizada|
 |8|Funciones|11|⭐Activa|
+|9|Clases y Sobreescritura de Métodos Nativos|9|⭐Activa|
 
 ### LISTA DE HERRAMIENTAS
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
