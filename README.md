@@ -22,7 +22,7 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |Tarea04|Uso delaclases abstractas en el caso de estudio|10|⭐Activa|
 |12|Clases Abstractas|8|⭐Activa|
 |13|Asserciones|3|⭐Activa|
-|14|Mixin|8|⭐Activa|
+|14|Mixin|9|⭐Activa|
 
 ### LISTA DE HERRAMIENTAS
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
