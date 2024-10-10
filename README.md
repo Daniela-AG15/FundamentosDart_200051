@@ -20,7 +20,7 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |10|Constructores Nombrados|8|☑Finalizada|
 |11|Getters (Lectura Controlada) y Setters (Modificación Controlada)|9|☑Finalizada|
 |Tarea04|Uso delaclases abstractas en el caso de estudio|10|⭐Activa|
-|12|Clases Abstractas|8|⭐Activa|
+|12|Clases Abstractas|11|⭐Activa|
 |13|Asserciones|3|⭐Activa|
 |14|Mixin|9|⭐Activa|
 
