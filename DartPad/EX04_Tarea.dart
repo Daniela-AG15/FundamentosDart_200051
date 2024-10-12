@@ -1,5 +1,3 @@
-
-
 enum Gender {
   Masculino,
   Femenino,
@@ -130,3 +128,90 @@ class Paciente extends Persona {
     final String formatedCreatedDate =
         "${createdAt.day.toString().padLeft(2, '0')}/" +
         "${createdAt.month.toString().padLeft(2, '0')}/${createdAt.year} ${createdAt.hour.toString().padLeft(2, '0')}:" +
+        "${createdAt.minute.toString().padLeft(2, '0')}:" +
+        "${createdAt.second.toString().padLeft(2, '0')}";
+
+    print("----------------------------------------------------------");
+    print(caseTitle); // Se imprime el título del caso (CASO 1, 2 o 3)
+    print("----------------------------------------------------------");
+    print("DATOS DEL PACIENTE");
+    print("----------------------------------------------------------");
+    print("id: $id");
+    print("Titulo de Cortesia: $cortesyTitle");
+    print("Nombre: $name $firstLastname $secondLastname");
+    print("CURP: $curp");
+    print("Género: ${gender.toString().split('.').last}");
+    print("Grupo Sanguíneo: $bloodGroup");
+    print("Fecha de Nacimiento: $formatedBirthDate");
+    print("nss: $nss");
+    print("Estatus Médico: $estatusMedico");
+    print("Status de Vida: $statusVida");
+    print("Fecha de Registro: $formatedCreatedDate");
+    print("----------------------------------------------------------");
+  }
+}
+
+// Caso de Prueba 1: Paciente nuevo
+void casoPrueba1() {
+  final caso1 = Paciente(
+    id: 1,
+    cortesyTitle: "Sra.",
+    name: "Daniela",
+    firstLastname: "Aguilar",
+    secondLastname: "Torres",
+    curp: "RAOL980215MDFLPR05",
+    gender: "F", // Cambié a "F" para que coincida con el género femenino
+    bloodGroup: "A+",
+    birthdate: DateTime(2001, 12, 15),
+    nss: "123456789",
+    fechaRegistro: DateTime.now(),
+    fechaUltimaCita: DateTime.now(),
+  );
+  caso1.printDetails("CASO 1: Nuevo paciente registrado hoy");
+}
+
+// Caso de Prueba 2: Paciente trabajador
+void casoPrueba2() {
+  final caso2 = Paciente(
+    id: 2,
+    cortesyTitle: "Dr.",
+    name: "Omar",
+    firstLastname: "Aguilar",
+    secondLastname: "Torres",
+    gender: "M",
+    bloodGroup: "B+",
+    birthdate: DateTime(1985, 07, 25),
+    curp: "SACB850725HDFLLR02",
+    nss: "987654321",
+    fechaRegistro: DateTime.now(),
+    fechaUltimaCita: DateTime.now(),
+  );
+  caso2.printDetails("CASO 2: Paciente que fue trabajador del hospital");
+}
+
+// Caso de Prueba 3: Paciente fallecido
+void casoPrueba3() {
+  final caso3 = Paciente(
+    id: 3,
+    cortesyTitle: "",
+    name: "Manuel",
+    firstLastname: "Aguilar",
+    secondLastname: "Torres",
+    curp: "AATM870410HDFLPN06",
+    gender: "M",
+    bloodGroup: "O+",
+    birthdate: DateTime(1987, 04, 10),
+    nss: "456123789",
+    fechaRegistro: DateTime(2010, 01, 15),
+    fechaUltimaCita: DateTime(2010, 09, 10),
+  );
+  caso3.registraDefuncion(); // Se registra defunción del paciente
+  caso3.printDetails("CASO 3: Paciente fallecido");
+}
+
+void main() {
+  // Ejecutar casos de prueba
+  casoPrueba1();
+  casoPrueba2();
+  casoPrueba3();
+}
