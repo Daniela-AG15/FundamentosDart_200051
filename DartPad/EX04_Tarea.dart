@@ -1,20 +1,45 @@
-// Definición de la Clase Abstracta <Persona>
+
+
+enum Gender {
+  Masculino,
+  Femenino,
+  Otro
+}
+
+enum BloodGroup {
+  A_p, // A positivo
+  A_n, // A negativo
+  B_p, // B positivo
+  B_n, // B negativo
+  AB_p, // AB positivo
+  AB_n, // AB negativo
+  O_p, // O positivo
+  O_n  // O negativo
+}
+
+// Definición de la Clase Abstracta Persona
+// Aqui se definen las características
+//Una clase abstracta no puede ser instanciada directamente solo puede heredar
 abstract class Persona {
-  int ID;
-  String? cortesyTitle;
+  int id;
+  // (?) indica que este campo es opcional y puede ser nulo
+  String? cortesyTitle; // (Dr., Sr., Sra.)
   String name;
   String firstLastname;
   String? secondLastname;
   String? curp;
-  String gender;
-  String bloodGroup;
+  String gender; // Género ('M', 'F', 'N/B')
+  String bloodGroup; // Grupo sanguíneo ('A+','A-','B+','B-','AB+','AB-','O+','O-')
   DateTime birthdate;
-  bool isActive;
-  DateTime createdAt;
-  DateTime? updatedAt;
+  bool isActive; // 
+  //Es la fecha en la que se registró a una persona en el sistema
+  DateTime createdAt; // Fecha de registro
+  DateTime? updatedAt; // Fecha de última actualización
 
+  // Definición de la Función de la Clase: El constructor se inicializa es decir
+  //permite inicializar los valores de las propiedades(id,titulo decortesia etc...)
   Persona({
-    required this.ID,
+    required this.id,
     this.cortesyTitle,
     required this.name,
     required this.firstLastname,
@@ -28,15 +53,28 @@ abstract class Persona {
     this.updatedAt,
   }) : createdAt = createdAt ?? DateTime.now();
 
+  //Es un método abstracto
+  //Se utilizará para imprimir los detalles de la persona
   void printDetails(String caseTitle);
+
+  // Es método que permite registrar la defunción
+  void registraDefuncion() {
+    isActive = false;
+    updatedAt = DateTime.now(); // Actualización de la fecha de defunción
+  }
 }
 
-// Declaración de la Clase <Paciente>
+// Declaración de las Propiedades de la  SubClase Paciente
+//Esta hereda las propiedades y métodos
 class Paciente extends Persona {
-  DateTime Fecha_Ultima_Cita;
+  String nss; 
+  String statusVida; 
+  String estatusMedico; 
+  DateTime fechaUltimaCita; // Guarda la Fecha de la última cita médica
 
+  // El Constructor Paciente que inicializa las propiedades heredadas de Persona y las de el
   Paciente({
-    required int ID,
+    required int id,
     String? cortesyTitle,
     required String name,
     required String firstLastname,
@@ -48,103 +86,47 @@ class Paciente extends Persona {
     bool isActive = true,
     DateTime? createdAt,
     DateTime? updatedAt,
-    required DateTime Fecha_registro,
-    required this.Fecha_Ultima_Cita,
+    required this.nss,
+    this.statusVida = "Vivo",
+    this.estatusMedico = "Estable",
+    required DateTime fechaRegistro, // Se omite en el constructor de Paciente ya que     se maneja en Persona
+    // Se llama al constructor de la clase Persona(padre)
+    required this.fechaUltimaCita,
   }) : super(
-          ID: ID,
-          cortesyTitle: cortesyTitle,
-          name: name,
-          firstLastname: firstLastname,
-          secondLastname: secondLastname,
-          curp: curp,
-          gender: gender,
-          bloodGroup: bloodGroup,
-          birthdate: birthdate,
-          isActive: isActive,
-          createdAt: createdAt,
-          updatedAt: updatedAt,
-        );
+            id: id,
+            cortesyTitle: cortesyTitle,
+            name: name,
+            firstLastname: firstLastname,
+            secondLastname: secondLastname,
+            curp: curp,
+            gender: gender,
+            bloodGroup: bloodGroup,
+            birthdate: birthdate,
+            isActive: isActive,
+            createdAt: createdAt,
+            updatedAt: updatedAt);
 
-  void actualizarDatos() {
-    updatedAt = DateTime.now();
+  // Métodos CRUD de la Clase:
+  
+  // Este método permite actualizar el estado de salud del paciente y lo guarda en        estatusMedico
+  void actualizarDatos(String nuevoEstadoMedico) {
+    estatusMedico = nuevoEstadoMedico;
+    updatedAt = DateTime.now(); // Actualización del estado médico
   }
-
+  //este método marca al paciente como inactivo
   void eliminarPaciente() {
     isActive = false;
+    statusVida = "Inactivo";
   }
 
-  @override
-  void registraDefuncion() {
-    isActive = false;
-    updatedAt = DateTime.now();
-  }
-
+  //
+  //Este método sobrescribe el método abstracto printDetails de la clase Persona
   @override
   void printDetails(String caseTitle) {
-    final formattedBirthDate = "${birthdate.day.toString().padLeft(2, '0')}/${birthdate.month.toString().padLeft(2, '0')}/${birthdate.year}";
-    final formattedCreatedDate = "${createdAt.day.toString().padLeft(2, '0')}/${createdAt.month.toString().padLeft(2, '0')}/${createdAt.year} ${createdAt.hour.toString().padLeft(2, '0')}:${createdAt.minute.toString().padLeft(2, '0')}:${createdAt.second.toString().padLeft(2, '0')}";
+    final String formatedBirthDate =
+        "${birthdate.day.toString().padLeft(2, '0')}/" +
+        "${birthdate.month.toString().padLeft(2, '0')}/${birthdate.year}";
 
-    print("----------------------------------------------------------");
-    print(caseTitle);
-    print("----------------------------------------------------------");
-    print("DATOS DEL PACIENTE\nID: $ID\nNombre: $name $firstLastname ${secondLastname ?? ''}\nCURP: $curp\nGénero: $gender\nGrupo Sanguíneo: $bloodGroup\nFecha de Nacimiento: $formattedBirthDate\nFecha de Registro: $formattedCreatedDate");
-    print("----------------------------------------------------------");
-  }
-}
-
-// Casos de prueba
-void casoPrueba1() {
-  final caso1 = Paciente(
-    ID: 1,
-    name: "Daniela",
-    firstLastname: "Aguilar",
-    secondLastname: "Torres",
-    curp: "AUTD011215MPLGRNA1", // CURP actualizado según la nueva fecha de nacimiento
-    gender: "F",
-    bloodGroup: "A+",
-    birthdate: DateTime(2001, 12, 15), // Fecha de nacimiento actualizada
-    Fecha_registro: DateTime.now(),
-    Fecha_Ultima_Cita: DateTime.now(),
-  );
-  caso1.printDetails("CASO 1: Nuevo paciente registrado hoy");
-}
-
-void casoPrueba2() {
-  final caso2 = Paciente(
-    ID: 2,
-    name: "Vanessa",
-    firstLastname: "Aguilar",
-    secondLastname: "García",
-    gender: "F",
-    bloodGroup: "B+",
-    birthdate: DateTime(1990, 06, 25),
-    curp: "AGGV900625HDFLLR02",
-    Fecha_registro: DateTime.now(),
-    Fecha_Ultima_Cita: DateTime.now(),
-  );
-  caso2.cortesyTitle = "Dra.";
-  caso2.printDetails("CASO 2: Paciente que fue trabajadora del hospital");
-}
-
-void casoPrueba3() {
-  final caso3 = Paciente(
-    ID: 3,
-    name: "Manuel",
-    firstLastname: "Aguilar",
-    secondLastname: "Torres",
-    curp: "AATM870410HDFLPN06",
-    gender: "M",
-    bloodGroup: "O+",
-    birthdate: DateTime(1987, 04, 10),
-    Fecha_registro: DateTime(2010, 01, 15),
-    Fecha_Ultima_Cita: DateTime(2010, 09, 10),
-  );
-  caso3.registraDefuncion();
-  caso3.printDetails("CASO 3: Paciente fallecido");
-}
-
-void main() {
-  casoPrueba1();
-  casoPrueba2();
-  casoPrueba3();
-}
+    final String formatedCreatedDate =
+        "${createdAt.day.toString().padLeft(2, '0')}/" +
+        "${createdAt.month.toString().padLeft(2, '0')}/${createdAt.year} ${createdAt.hour.toString().padLeft(2, '0')}:" +
