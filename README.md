@@ -24,7 +24,7 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |13|Asserciones|3|☑Finalizada|
 |14|Mixin|9|☑Finalizada|
 |15|Futures|5|⭐Activa|
-|16|Futures|5|⭐Activa|
+|16|Async Await|5|⭐Activa|
 |17|Try_Catch_On_Finally|6|⭐Activa|
 |18|Stream|6|⭐Activa|
 |19|Stream Await|4|⭐Activa|
