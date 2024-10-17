@@ -23,11 +23,11 @@ Proyecto de Clase para la Unidad 1 de la  de Desarrollo Móvil Integral (DMI)
 |12|Clases Abstractas|11|☑Finalizada|
 |13|Asserciones|3|☑Finalizada|
 |14|Mixin|9|☑Finalizada|
-|15|Futures|--|⭐Activa|
-|16|Futures|--|⭐Activa|
-|17|Try_Catch_On_Finally|--|⭐Activa|
-|18|Stream|--|⭐Activa|
-|19|Stream Await|--|⭐Activa|
+|15|Futures|5|⭐Activa|
+|16|Futures|5|⭐Activa|
+|17|Try_Catch_On_Finally|6|⭐Activa|
+|18|Stream|6|⭐Activa|
+|19|Stream Await|4|⭐Activa|
 
 ### LISTA DE HERRAMIENTAS
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
